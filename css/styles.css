@@ -2,8 +2,13 @@
   cursor: pointer;
   width:720px;
   height: 100px;
+  line-height: 100px;
   text-align: center;
   border: 1px solid;
+  background-color: #4c4cff;
+  color: white;
+}
+.box:hover{
   background-color: #7f7fff;
 }
 .propkey{
@@ -36,4 +41,7 @@
   width: 50px;
   text-align: center;
 
+}
+.noOfLines{
+  color: red;
 }
