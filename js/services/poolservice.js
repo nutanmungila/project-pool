@@ -3,18 +3,12 @@ angular.module("poolsBetting")
     var poolServiceData = {
       data: {
         listpool: [],
-        pools: [],
         arrayGroups: [],
-        listSelections: [],
         poolprop: {},
         pooldetails: {},
         poollegs: {
           id: "",
           legs: []
-        },
-        poollegselection: {
-          id: "",
-          selections: []
         }
 
       },

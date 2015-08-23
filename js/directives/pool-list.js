@@ -14,8 +14,6 @@ angular.module("poolsBetting")
         $scope.pool = {};
 
         $scope.onClickPool = function(poolitem) {
-          //$scope.showProp = true;
-          //$scope.pool = poolitem;
           $state.go('pooldetails', {
             id: poolitem.id
           });
