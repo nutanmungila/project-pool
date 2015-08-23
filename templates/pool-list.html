@@ -1,0 +1,15 @@
+<div>
+  <md-content layout-padding style="padding: 24px;">
+    <div flex ng-repeat="poolobject in poolData.arrayGroups">
+      <div layout="column" ng-repeat="poolgroup in poolobject">
+        <div>
+          <strong>Group Name:{{poolgroup.display_group_name}}</strong>
+        </div>
+        <div class="box" ng-click="onClickPool(poolitem)" ng-repeat="poolitem in poolgroup.pools">{{poolitem.name}}</div>
+      </div>
+    </div>
+
+  </div>
+
+</md-content>
+</div>

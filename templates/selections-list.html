@@ -1,0 +1,57 @@
+<div>
+ <div layout="row">
+      <div flex="15">
+          <p><strong>POOL DETAILS</strong></p>
+          <table class="proptable">
+            <thead >
+              <td class="prophead">Property</td>
+              <td class="prophead">Value</td>
+            </thead>
+            <tr>
+              <td class="proprow">ID</td>
+              <td class="proprow">{{pool.id}}</td>
+            </tr>
+            <tr>
+              <td class="proprow">Name</td>
+              <td class="proprow">{{pool.name}}</td>
+            </tr>
+            <tr>
+              <td class="proprow">Sport</td>
+              <td class="proprow">{{pool.sport_code}}</td>
+            </tr>
+            <tr>
+              <td class="proprow">Status</td>
+              <td class="proprow">{{pool.status}}</td>
+            </tr>
+          </table>
+      </div>
+    <div flex="60">
+        <div  class="selectionList" ng-repeat="poolleg in poolData.poollegs.legs">
+           <div>{{poolleg.sport_event.name}}
+             <div class="selection"  ng-repeat="itemselection in poolleg.selections">
+               <md-checkbox ng-checked="exists(itemselection, poolData.selectedSelections)"
+               ng-click="toggle(itemselection, poolData.selectedSelections)">
+                       {{itemselection.name}}
+              </md-checkbox>
+             </div>
+           </div>
+         </div>
+    </div>
+
+    <div flex="25">
+         <p> Selected Selections </p>
+         <div class="selectedselection" ng-repeat="selection in poolData.selectedSelections track by $index">
+           {{selection.name}}
+         </div>
+         <md-radio-group layout="row" ng-model="bet.stakeamount">
+           <md-radio-button value="2">£2.00</md-radio-button>
+           <md-radio-button value="1"> £1.00 </md-radio-button>
+           <md-radio-button value="0.50">£0.50</md-radio-button>
+           <md-radio-button value="0.20">£0.20</md-radio-button>
+         </md-radio-group>
+         <p>Bet Value: <span class="radioValue">{{ bet.stakeamount }}</span> </p>
+         <div>Total Bet: {{poolData.selectedSelections.length * bet.stakeamount}}</div>
+         <md-button class="md-raised md-primary" ng-click="placeBet()">PLACE BET</md-button>
+     </div>
+ </div>
+ </div>

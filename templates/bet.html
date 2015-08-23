@@ -1,0 +1,11 @@
+<div>
+  <md-radio-group layout="row" ng-model="bet.stakeamount">
+    <md-radio-button value="2">£2.00</md-radio-button>
+    <md-radio-button value="1"> £1.00 </md-radio-button>
+    <md-radio-button value="0.50">£0.50</md-radio-button>
+    <md-radio-button value="0.20">£0.20</md-radio-button>
+  </md-radio-group>
+  <p>bet value: <span class="radioValue">{{ bet.stakeamount }}</span> </p>
+  <div>Total Bet: {{poolData.selectedSelections.length * bet.stakeamount}}</div>
+  <md-button class="md-raised md-primary" ng-click="placeBet()">PLACE BET</md-button>
+</div>

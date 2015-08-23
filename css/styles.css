@@ -1,0 +1,39 @@
+.box {
+  cursor: pointer;
+  width:100px;
+  border: 1px solid;
+  background-color: #7f7fff;
+}
+.propkey{
+    cursor: none;
+    border: 1px solid;
+}
+.propvalue{
+  cursor: none;
+  border: 1px solid;
+}
+.proptable{
+  border: 1px solid;
+  background-color: #ff6666;
+}
+.prophead{
+  text-align: center;
+  border-bottom: 1px solid;
+}
+.proprow{
+  text-align: center;
+}
+.selectionList{
+  display: inline-block;
+  width: 250px;
+
+}
+.selection{
+
+}
+.selectedselection{
+  background-color: #7f7fff;
+  width: 50px;
+  text-align: center;
+
+}
