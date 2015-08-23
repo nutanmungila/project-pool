@@ -1,76 +1,70 @@
-var app = angular.module("poolsBetting");
+angular.module("poolsBetting")
+  .factory("poolService", ["$http", function($http) {
+    var poolServiceData = {
+      data: {
+        listpool: [],
+        pools: [],
+        arrayGroups: [],
+        listSelections: [],
+        poolprop: {},
+        pooldetails: {},
+        poollegs: {
+          id: "",
+          legs: []
+        },
+        poollegselection: {
+          id: "",
+          selections: []
+        },
+        selectedSelections: []
 
-app.factory("poolService", ["$http", function($http) {
-  var poolServiceData = {
-    data: {
-      listpool: [],
-      pools: [],
-      arrayGroups: [],
-      listSelections: [],
-      poolprop: {},
-      pooldetails: {},
-      poollegs: {
-        id: "",
-        legs: []
       },
-      poollegselection: {
-        id: "",
-        selections: []
+      getPool: function() {
+        return $http.get(
+            "https://colossusdevtest.herokuapp.com/api/pools.json")
+          .success(function(data) {
+            poolServiceData.data.arrayGroups = [];
+            poolServiceData.data.listpool = data;
+            for (var i = 0; i < poolServiceData.data.listpool.length; i++) {
+              poolServiceData.data.arrayGroups.push(poolServiceData.data
+                .listpool[i].groups);
+            }
+
+          });
       },
-      selectedSelections: []
 
-    },
-    getPool: function() {
-      return $http.get(
-          "https://colossusdevtest.herokuapp.com/api/pools.json")
-        .success(function(data) {
-          poolServiceData.data.listpool = data;
-          for (var i = 0; i < poolServiceData.data.listpool.length; i++) {
-            poolServiceData.data.arrayGroups.push(poolServiceData.data
-              .listpool[i].groups);
-          }
+      getPoolById: function(id) {
+        return poolServiceData.data.pooldetails;
 
-        });
-    },
+      },
+      postValues: function(msg) {
 
-    getPoolById: function(id) {
-      return poolServiceData.data.pooldetails;
+        return $http.post(
+          'https://colossusdevtest.herokuapp.com/api/tickets.json', {
+            'message': msg
+          });
+      },
 
-    },
-    postValues: function(msg) {
+      getSelections: function(id) {
+        return $http.get(
+            "https://colossusdevtest.herokuapp.com/api/pools/" + id +
+            ".json")
+          .success(function(data) {
+            poolServiceData.data.poolprop = data;
+            poolServiceData.data.pooldetails = data.pool_info;
+            poolServiceData.data.poollegs.id = id;
+            poolServiceData.data.poollegs.legs = poolServiceData.data
+              .poolprop
+              .legs;
 
-      return $http.post(
-        'https://colossusdevtest.herokuapp.com/api/tickets.json', {
-          'message': msg
-        });
-    },
+            // for each leg create a selection list
+            poolServiceData.data.poollegs.legSelections =
+              poolServiceData.data.poollegs.legs.map(function(leg) {
+                return [];
+              })
+          });
+      }
 
-    getSelections: function(id) {
-      return $http.get(
-          "https://colossusdevtest.herokuapp.com/api/pools/" + id +
-          ".json")
-        .success(function(data) {
-          poolServiceData.data.poolprop = data;
-          poolServiceData.data.pooldetails = data.pool_info;
-          poolServiceData.data.poollegs.id = id;
-          poolServiceData.data.poollegs.legs = poolServiceData.data
-            .poolprop
-            .legs;
-
-          poolServiceData.data.listSelections = [];
-          for (var j = 0; j < poolServiceData.data.poollegs.legs.length; j++) {
-            poolServiceData.data.listSelections.push(
-              poolServiceData.data
-              .poollegs.legs[j].selections);
-            poolServiceData.data.poollegselection.id =
-              poolServiceData.data.poollegs.legs[0].id;
-            poolServiceData.data.poollegselection.id =
-              poolServiceData.data.poollegs.legs[0].id;
-          }
-
-        });
-    }
-
-  };
-  return poolServiceData;
-}])
+    };
+    return poolServiceData;
+  }])
