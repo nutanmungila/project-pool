@@ -1,6 +1,6 @@
 <div>
   <div layout="row">
-    <div flex="25">
+    <div flex="15">
       <p>
         <strong>POOL DETAILS</strong>
       </p>
@@ -27,7 +27,7 @@
         </tr>
       </table>
     </div>
-    <div flex="75">
+    <div flex="60">
       <div class="selectionList" ng-repeat="poolleg in poolData.poollegs.legs">
         <div>{{poolleg.sport_event.name}}
           <div class="selection" ng-repeat="itemselection in poolleg.selections">
@@ -39,29 +39,31 @@
       </div>
     </div>
 
-  </div>
-  <div layout-padding>
-    <p>
-      No of Lines :
-      {{getNoOfLines()}}
-    </p>
-    <p class="noOfLines" ng-if="!getNoOfLines()">
-      Please make atleast 1 selection in each leg for betting.</p>
-    <div ng-if="getNoOfLines()">
-      <md-radio-group layout="row" ng-model="bet.stakeamount">
-        <md-radio-button value="2">£2.00</md-radio-button>
-        <md-radio-button value="1">
-          £1.00
-        </md-radio-button>
-        <md-radio-button value="0.50">£0.50</md-radio-button>
-        <md-radio-button value="0.20">£0.20</md-radio-button>
-      </md-radio-group>
-      <p>Bet Value:
-        <span class="radioValue">{{ bet.stakeamount }}</span>
+    <div flex="25">
+      <p>
+        No of Lines :
+        {{getNoOfLines()}}
       </p>
-      <div>Total Bet:
-        {{getNoOfLines() * bet.stakeamount}}</div>
-      <md-button class="md-raised md-primary" ng-click="placeBet()">PLACE BET</md-button>
+      <p class="noOfLines" ng-if="!getNoOfLines()">
+        Please make atleast 1 selection in each leg for betting.</p>
+      <div ng-if="getNoOfLines()">
+        <md-radio-group layout="column" ng-model="bet.stakeamount">
+          <md-radio-button value="2">£2.00</md-radio-button>
+          <md-radio-button value="1">
+            £1.00
+          </md-radio-button>
+          <md-radio-button value="0.50">£0.50</md-radio-button>
+          <md-radio-button value="0.20">£0.20</md-radio-button>
+        </md-radio-group>
+        <p>Bet Value:
+          <span class="radioValue">{{ bet.stakeamount }}</span>
+        </p>
+        <div>Total Bet:
+          {{getNoOfLines() * bet.stakeamount}}</div>
+        <md-button class="md-raised md-primary" ng-click="placeBet()">PLACE BET</md-button>
+      </div>
     </div>
+
   </div>
+
 </div>
