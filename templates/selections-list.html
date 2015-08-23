@@ -40,9 +40,9 @@
 
     <div flex="25">
          <p> No of Lines : {{getNoOfLines()}} </p>
-         <p ng-if="!getNoOfLines()"> Please make atleast 1 selection in each leg for betting.</p>
+         <p ng-if="!getNoOfLines()" style="color:red"> Please make atleast 1 selection in each leg for betting.</p>
          <div ng-if="getNoOfLines()">
-           <md-radio-group layout="row" ng-model="bet.stakeamount">
+           <md-radio-group layout="column" ng-model="bet.stakeamount">
              <md-radio-button value="2">£2.00</md-radio-button>
              <md-radio-button value="1"> £1.00 </md-radio-button>
              <md-radio-button value="0.50">£0.50</md-radio-button>
