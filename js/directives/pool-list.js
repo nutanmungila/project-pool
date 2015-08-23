@@ -4,7 +4,7 @@ app.directive("poolList", [function($scope) {
   return {
     restrict: 'E',
     scope: {},
-    templateUrl: "/templates/pool-list.html",
+    templateUrl: "templates/pool-list.html",
     controller: ["$scope", "poolService", "$state", function($scope,
       poolService, $state) {
 

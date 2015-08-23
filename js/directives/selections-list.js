@@ -4,7 +4,7 @@ app.directive("selectionsList", [function() {
   return {
     restrict: 'E',
     scope: {},
-    templateUrl: "/templates/selections-list.html",
+    templateUrl: "templates/selections-list.html",
     controller: ["$scope", "poolService", "$state", function($scope,
       poolService, $state) {
       $scope.poolData = poolService.data;
