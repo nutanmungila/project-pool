@@ -15,8 +15,7 @@ angular.module("poolsBetting")
         poollegselection: {
           id: "",
           selections: []
-        },
-        selectedSelections: []
+        }
 
       },
       getPool: function() {

@@ -1,7 +1,7 @@
 <div>
   <md-content layout-padding style="padding: 24px;">
     <div flex ng-repeat="poolobject in poolData.arrayGroups">
-      <div layout="column" ng-repeat="poolgroup in poolobject">
+      <div layout="row" ng-repeat="poolgroup in poolobject">
         <div>
           <strong>Group Name:{{poolgroup.display_group_name}}</strong>
         </div>
